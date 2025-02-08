@@ -1,0 +1,58 @@
+﻿
+
+<h1 class="text-center mb-3" style="font-weight:700;font-size:50px; font-stretch:expanded">
+
+    Instructions
+</h1>
+<div class="upper-gradient-layer">
+    <div class="card lower-gradient-layer grid-margin">
+        <div class="card-body">
+
+            <iframe src="https://candidate.dfccil.com/Instruction/Pages-from-Advt-01-DR-2023-SD1W.pdf" frameborder="0" class="pdfinstruction"></iframe>
+
+
+
+        </div>
+    </div>
+</div>
+<div class="grid-margin col-lg-12">
+    <h4><span class="text-danger">Note:</span> All documents should be self-attested before uploading.</h4>
+</div>
+<div id="declaration" class="col-lg-12 grid-margin">
+    <div class="form-check form-check-flat">
+        <label class="form-check-label">
+            <input class="checkbox" type="checkbox" id="confirmCheckbox">
+            I hereby confirm that I have carefully read the Instructions
+            <i class="input-helper"></i>
+        </label>
+    </div>
+</div>
+<div class="col-lg-12 text-right">
+    <button type="submit" class="btn btn-primary" id="submitButton">Confirm</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.4/pdfobject.min.js"></script>
+<script src="~/customjs/myprofile/profiletemp.js" asp-append-version="true"></script>
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        var checkbox = document.getElementById("confirmCheckbox");
+        var submitButton = document.getElementById("submitButton");
+        $("#submitButton").prop('disabled', true)
+        checkbox.addEventListener("change", function () {
+            if (checkbox.checked) {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        });
+
+        submitButton.addEventListener("click", function () {
+            if (checkbox.checked) {
+
+                window.location.href = "/Home/myprofile";
+            }
+        });
+    });
+</script>

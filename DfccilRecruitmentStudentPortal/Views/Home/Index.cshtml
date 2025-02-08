@@ -1,0 +1,929 @@
+﻿<div class="page-loader" style="display:none">
+    <div class="loader">
+        <div>
+            <img src="https://dfccil.com/images/logo.png">
+        </div>
+        <div class="loader-container">
+            <div class="dot-loader"></div>
+            <div class="dot-loader"></div>
+            <div class="dot-loader"></div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    label {
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    div span {
+        font-size: 13px;
+    }
+
+    .form-group {
+        margin-bottom: 5px !important;
+    }
+
+    .gap40 {
+        gap: 40px;
+        padding: 7px 25px 0px;
+        background: #1b1891;
+        color: #fff;
+        border-radius: 50px;
+        box-shadow: inset 0 0 10px 3px #fff;
+    }
+
+    .head-divider {
+        margin-top: -10px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #fff;
+        width: 90%;
+    }
+
+    .color-white {
+        color: #fff !important;
+    }
+
+    @@media screen and (min-width: 700px) {
+        .login-status {
+            margin-top: -37px;
+            margin-right: 15px;
+        }
+    }
+
+    @@media (min-width: 700px) and (max-width: 1100px) {
+        div span, label {
+            font-size: 10px !important;
+        }
+    }
+
+    @@media screen and (max-width: 690px) {
+        .mb-colm {
+            flex-direction: column-reverse;
+            gap: 40px;
+        }
+    }
+</style>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .input-container {
+        padding: 0 20px;
+    }
+
+    input {
+        width: 100%;
+        margin: 0 0 10px;
+        border: none;
+        padding: 10px 15px;
+        color: #fff;
+    }
+
+    .input1 {
+        background-color: #f55353;
+    }
+
+    .input2 {
+        background-color: #fdbf00;
+    }
+
+    .input3 {
+        background-color: #f3797e;
+    }
+
+    .input4 {
+        background-color: #7978e9;
+    }
+
+    button {
+        border: none;
+        background-color: #B71066;
+        padding: 15px 20px;
+        color: #fff;
+    }
+
+    .main-box {
+        max-width: 400px;
+        max-height: 1000px;
+        width: 90%;
+        height: auto;
+        margin: auto;
+        margin-top: 25px;
+    }
+
+    .chart {
+        position: relative;
+    }
+
+    .chart-center {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        left: 50%;
+        background: #fff;
+        width: 35%;
+        height: 35%;
+    }
+
+    .value-indicator {
+        position: relative;
+    }
+
+        .value-indicator label {
+            position: absolute;
+            top: 12px;
+            left: 35px;
+            color: #fff;
+        }
+
+        .value-indicator input {
+            border-top-left-radius: 4px;
+            border-top-right-radius: 15px;
+        }
+
+        .value-indicator::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: -5px;
+            width: 65px;
+            height: 20px;
+            background: #f5f7ff;
+            border-radius: 50%;
+        }
+
+        .value-indicator::after {
+            content: "";
+            position: absolute;
+            bottom: 8px;
+            right: -4px;
+            width: 20px;
+            height: 20px;
+            background: #f5f7ff;
+            border-radius: 50%;
+        }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .top-head {
+        font-size: 32px;
+        font-weight: 900;
+        padding-top: 5px;
+        background: -webkit-linear-gradient(95deg, #193478, #00c498);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .top-side-icon {
+        background: url(https://images.pexels.com/photos/66238/paper-colorful-color-school-66238.jpeg?auto=compress&cs=tinysrgb&w=600);
+        background-size: 84% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .welcome-icon {
+        border-right: 2px solid red;
+        margin: 6px;
+        padding: 4px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        background-image: linear-gradient(340deg, #ea0000, #ffcd0f);
+    }
+
+        .welcome-icon i {
+            font-size: 32px;
+            padding: 15px 11px;
+            margin-right: 7px;
+            background-image: linear-gradient(110deg, #e20016e0, #4b49ac);
+            color: #fff;
+            border-radius: 50px;
+        }
+
+    @@media screen and (max-width: 700px) {
+        .top-head {
+            font-size: 24px;
+            padding-left: 10px;
+        }
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    .card-people .weather-info {
+        position: absolute;
+        top: 90%;
+        width: 97%;
+        border-radius: 20px;
+        padding: 7px;
+        background: #00031a75;
+        left: 20%;
+        color: #fff;
+        transform: translate(-20%, -90%);
+    }
+
+    .card-people {
+        padding-top: 0px !important;
+    }
+
+    .card.tale-bg {
+        background: #f5f7ff !important;
+    }
+
+    .long-card {
+        height: 160px;
+    }
+
+    .emp-top-info {
+        font-size: 24px;
+        gap: 20px;
+        border-right: 2px solid #fff;
+        height: 53px;
+    }
+
+        .emp-top-info p {
+            font-size: 24px;
+        }
+
+    .status-info {
+        border-right: 2px solid #fff;
+    }
+
+    .status-info-head {
+        position: relative;
+    }
+
+        .status-info-head::after {
+            content: '______';
+            position: absolute;
+            top: 50%;
+            padding-top: 7px;
+            font-weight: 700;
+            font-size: 15px;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+    .feature {
+        font-size: 21px;
+    }
+
+    @@media screen and (max-width: 600px) {
+        .emp-top-info {
+            border: none;
+            justify-content: center;
+        }
+
+        .status-info {
+            border-right: none;
+            border-bottom: 1px solid #fff;
+        }
+    }
+
+    .fs-30 {
+        font-size: 50px;
+        display: block;
+        margin-bottom: 7px;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke-color: #fff;
+        font-weight: 800;
+    }
+
+    .card:hover .fs-30 {
+        -webkit-text-stroke-color: transparent;
+        -webkit-text-fill-color: #fff;
+    }
+
+    .decorate-card {
+        overflow: hidden;
+    }
+
+        .decorate-card::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #ffffff2e;
+        }
+
+        .decorate-card::after {
+            content: "";
+            position: absolute;
+            bottom: -45px;
+            right: 27px;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #ffffff2e;
+        }
+</style>
+
+<style>
+    :root {
+        --surface-color: #fff;
+        --curve: 40;
+    }
+
+    .card-claim {
+        position: relative;
+        display: block;
+        height: 100%;
+        border-radius: calc(var(--curve) * 1px);
+        overflow: hidden;
+        text-decoration: none;
+    }
+
+    .card-claim__image {
+        width: 100%;
+        height: auto;
+    }
+
+    .card-claim__overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+        border-radius: calc(var(--curve) * 1px);
+        background-color: var(--surface-color);
+        transform: translateY(100%);
+        transition: .2s ease-in-out;
+    }
+
+    .card-claim:hover .card-claim__overlay {
+        transform: translateY(0);
+    }
+
+    .card-claim__header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 2em;
+        padding: 2em 2em 2em;
+        border-radius: calc(var(--curve) * 1px) 0 0 0;
+        background-color: var(--surface-color);
+        transform: translateY(-100%);
+        transition: .2s ease-in-out;
+    }
+
+    .card-claim__arc {
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        bottom: 100%;
+        right: 0;
+        z-index: 1;
+    }
+
+        .card-claim__arc path {
+            fill: var(--surface-color);
+            d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+        }
+
+    .card-claim:hover .card-claim__header {
+        transform: translateY(0);
+    }
+
+    .card-claim__header i {
+        background-image: linear-gradient(45deg, #2637ab, #6fe5ca);
+        color: #fff;
+        padding: 12px 10px;
+        border-radius: 50px;
+    }
+
+    .card-claim__thumb {
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .card-claim__title {
+        font-size: 1em;
+        margin: 0 0 .3em;
+        color: #6A515E;
+    }
+
+    .card-claim__tagline {
+        display: block;
+        margin: 1em 0;
+        font-family: "MockFlowFont";
+        font-size: .8em;
+        color: #D7BDCA;
+    }
+
+    .card-claim__status {
+        font-size: .8em;
+        color: #D7BDCA;
+    }
+
+    .card-claim__description {
+        padding: 15px 2em 15px;
+        margin-top: -10px !important;
+        margin: 0;
+        text-align: right;
+        color: #D7BDCA;
+        font-family: "MockFlowFont";
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+    }
+
+    .claim-btn {
+        border-radius: 40px;
+        padding: 1px 25px 3px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-size: 17px;
+        box-shadow: 0 0 5px 2px #9bb6d3;
+    }
+
+    .card-claims li {
+        max-width: 320px;
+    }
+
+    #liDeviceClaim, #liMedicalClaim {
+        display: non;
+    }
+
+    .mainCont {
+        margin: 30px 0;
+    }
+
+    .btn-back {
+        display: flex;
+        gap: 7px;
+        box-shadow: 0 0 10px -5px black;
+        color: #252393;
+        padding: 3px 14px 4px;
+        border-radius: 8px;
+        transition: all 0.7s;
+    }
+
+        .btn-back:hover {
+            background-image: linear-gradient(140deg, #ff6161, #2f2cb3);
+            color: white;
+            border: 1px solid #b0b0ff;
+        }
+
+        .btn-back i {
+            transform: rotate(180deg);
+            font-size: 19px;
+        }
+
+        .btn-back .btnText {
+            font-size: 21px;
+            line-height: 1.06;
+        }
+
+    .div-back-btn {
+        margin-top: -10px !important;
+        margin-bottom: 15px !important
+    }
+
+    .span-indicator {
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        padding: 0px 5px 0px 6px;
+        box-shadow: 0 0 5px 0px #000000;
+        font-weight: 700;
+        background: #fff;
+        border-radius: 50px;
+        display: none;
+    }
+
+    .card-claim {
+        margin: auto;
+    }
+
+    @@media screen and (max-width: 700px) {
+        .card-claims {
+            gap: 20px;
+        }
+    }
+</style>
+
+@*<div class="row align-items-baseline">
+    <div class="col-md-3 mb-4 stretch-card transparent">
+        <div class="card card-tale decorate-card">
+            <div class="card-body">
+                <p class="mb-4">Finance Processing</p>
+                <p class="fs-30 mb-2" id="financeprocessing"></p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4 stretch-card transparent">
+        <div class="card card-dark-blue decorate-card">
+            <div class="card-body">
+                <p class="mb-4">Tour Not Availed</p>
+                <p class="fs-30 mb-2" id="tournotavailed"></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4 mb-lg-0 stretch-card transparent">
+        <div class="card card-light-blue decorate-card">
+            <div class="card-body">
+                <p class="mb-4">Payment Transferred</p>
+                <p class="fs-30 mb-2" id="paymenttransfer"></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 stretch-card transparent">
+        <div class="card card-light-danger decorate-card">
+            <div class="card-body">
+                <p class="mb-4">Clarification Processing</p>
+                <p class="fs-30 mb-2" id="clarification"></p>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+@*<div class="row mt-4 mb-4">
+    <div class="col-sm-12">
+        <div class="card" style="overflow: hidden;">
+            <div class="row align-items-center">
+                <div class="col-2 top-side-icon">
+                    <div class="welcome-icon text-right">
+                        <i class="fa-solid fa-hands-praying"></i>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <p class="top-head">
+                        Welcome To Claim Portal.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+ 
+<div class="modal">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <section class="Coming-Model">
+
+                <header>Coming Soon</header>
+
+
+
+            </section>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>
+<style>
+    .Coming-Model {
+        display: flex;
+        row-gap: 10px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+        .Coming-Model::after {
+            position: absolute;
+            content: "";
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background: #000;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .Coming-Model header {
+            font-size: 60px;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+        }
+
+    @@media screen and (max-width: 480px) {
+        .Coming-Model header {
+            font-size: 50px;
+        }
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
+
+        .modal .modal-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            margin: 25% auto;
+            width: 50%;
+            border-radius: 4px;
+        }
+
+            .modal .modal-content .modal-header {
+                background-color: #4b49ac;
+                padding: 20px 16px;
+                color: #fff;
+            }
+
+                .modal .modal-content .modal-header .close {
+                    position: absolute;
+                    right: 20px;
+                    top: 8px;
+                    cursor: pointer;
+                    font-size: 25px;
+                }
+
+            .modal .modal-content .modal-body {
+                padding: 16px;
+            }
+
+            .modal .modal-content .modal-footer {
+                background-color: #4b49ac;
+                padding: 16px;
+                color: #fff;
+                text-align: end;
+            }
+
+                .modal .modal-content .modal-footer button {
+                    padding: 8px 28px;
+                    background-color: #fff;
+                    color: #4b49ac;
+                    font-size: 14px;
+                    border: none;
+                    outline: none;
+                    border-radius: 3px;
+                    cursor: pointer;
+                }
+
+    .show {
+        animation: show 0.3s forwards ease-in;
+    }
+
+    @@keyframes show {
+        to {
+            top: 0;
+        }
+    }
+
+    @@media screen and (max-width: 638px) {
+        .modal-content {
+            margin: 70% auto !important;
+        }
+    }
+
+    .sidenav {
+        display: none;
+    }
+
+    .card-claim__description {
+        display: flex !important;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    @@media(max-width:928px) {
+        .modal .modal-content {
+            width: 98%;
+        }
+    }
+
+    @@media screen and (min-width: 1000px) {
+        .card-claim {
+            max-width: 80%;
+        }
+    }
+
+    @@media screen and (min-width: 1200px) {
+        .card-claim {
+            max-width: 70%;
+        }
+    }
+
+    @@media screen and (max-width: 800px) {
+        .card-claim {
+            max-width: 90%;
+            margin: auto;
+        }
+    }
+    /* FOR NEW CARD DESIGN */
+    #sidebar {
+        display: none;
+    }
+
+    .main-panel {
+        width: 100% !important;
+    }
+</style>
+
+<script>
+    window.onload = function () {
+        // Click the button with id "menuBtnToggle"
+        document.getElementById("menuBtnToggle").click();
+    };
+</script>
+
+<script>
+    const modal = document.querySelector(".modal");
+    const modalContent = document.querySelector(".modal-content");
+
+    const btns = document.querySelectorAll(".btn-upcoming");
+
+
+    btns.forEach(btn => {
+        btn.addEventListener("click", function () {
+            modal.style.display = "block";
+            modalContent.classList.add("show");
+        });
+    });
+
+    document.querySelector(".close").addEventListener("click", function () {
+        modal.style.display = "none";
+        modalContent.classList.remove("show");
+    });
+
+    window.onclick = e => {
+        if (e.target == modal) {
+            modal.style.display = "none";
+            modalContent.classList.remove("show");
+        }
+    };
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    document.getElementById('menuBtnToggle').addEventListener('click', function () {
+        var sidenav = document.querySelector('.sidenav');
+        var currentDisplay = window.getComputedStyle(sidenav).display;
+
+        if (currentDisplay === 'none') {
+            sidenav.style.display = 'block';
+        } else {
+            sidenav.style.display = 'none';
+        }
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        //  alert('Index Page Loaded')
+        //function checkData(d) {
+
+        //    if (d == undefined)
+        //        return false;
+        //    else {
+        //        return d;
+        //    }
+        //}
+        //function setEmpDetailsSessionStorage() {
+
+
+        //    try {
+        //        var check = checkData(@Context.Session.GetInt32("empId"));
+
+        //        if (check) {
+        //            if (check != 0) {
+        //                localStorage.setItem('empId', '@Context.Session.GetInt32("empId")');
+        //                localStorage.setItem('empCode', '@Context.Session.GetString("empCode")');
+        //                localStorage.setItem('empGrade', '@Context.Session.GetString("empGrade")');
+        //                localStorage.setItem('empDesignation', '@Context.Session.GetString("empDesignation")');
+        //                localStorage.setItem('empUnit', '@Context.Session.GetString("empUnit")');
+        //                localStorage.setItem('Name', '@Context.Session.GetString("Name")');
+        //                localStorage.setItem('Role', '@Context.Session.GetString("Role")');
+        //                localStorage.setItem('EmailId', '@Context.Session.GetString("EmailId")');
+        //                localStorage.setItem('Mobile', '@Context.Session.GetString("Mobile")');
+        //                localStorage.setItem('Department', '@Context.Session.GetString("Department")');
+        //                ApiToken = '@Context.Session.GetString("Token")'
+
+        //                if (ApiToken != '') {
+        //                    localStorage.setItem('Token', ApiToken);
+
+        //                }
+
+
+        //            }
+        //        }
+        //    }
+        //    catch (ex) {
+
+        //    }
+
+
+        //}
+        //setEmpDetailsSessionStorage();
+
+        //alert(localStorage.getItem('Token'))
+        createChart();
+    });
+
+    $('button').click(function () {
+        createChart();
+    });
+
+    function createChart() {
+        var colorArr = ["#f55353", "#fdbf00", "#f3797e", "#807eff"],
+            pieData = [],
+            sectorAngleArr = [],
+            svg = '<svg viewBox="0 0 400 400">',
+            total = 0,
+            startAngle = 0,
+            endAngle = 0,
+            x1 = 0,
+            x2 = 0,
+            y1 = 0,
+            y2 = 0,
+            percent = 0;
+
+        // Get values of input boxes and store in pieData array
+        $('.input-container input').each(function () {
+
+            var value = parseInt($(this).val()); // make sure value is saved as an int
+            pieData.push(value);
+            total += value; // Adds all numbers to get the sum of all inputs
+        });
+
+        // Get angles each slice swipes for sectorAngleArr
+        for (var i = 0; i < pieData.length; i++) {
+            var angle = Math.ceil(360 * pieData[i] / total);
+            sectorAngleArr.push(angle);
+        }
+
+        for (var i = 0; i < sectorAngleArr.length; i++) {
+            startAngle = endAngle;
+            endAngle = startAngle + sectorAngleArr[i];
+
+            // Check if the angle is over 180deg for large angle flag
+            percent = endAngle - startAngle;
+            var overHalf = 0;
+            if (percent > 180) {
+                overHalf = 1;
+            }
+
+            // Super fun math for calculating x and y positions
+            x1 = 200 + 180 * Math.cos(Math.PI * startAngle / 180);
+            y1 = 200 + 180 * Math.sin(Math.PI * startAngle / 180);
+
+            x2 = 200 + 180 * Math.cos(Math.PI * endAngle / 180);
+            y2 = 200 + 180 * Math.sin(Math.PI * endAngle / 180);
+
+            var d = "M200,200  L" + x1 + "," + y1 + "  A180,180 0 " + overHalf + ",1 " + x2 + "," + y2 + " z";
+            svg += '<path d="' + d + '" style="fill: ' + colorArr[i] + ';" />';
+        }
+
+        // Close SVG
+        svg += '</svg>';
+
+        // Write html for SVG to the DOM
+        $('#pie-chart').html(svg);
+    }
+</script>
+
+<script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) { myIndex = 1 }
+        //x[myIndex - 1].style.display = "block";
+        setTimeout(carousel, 4000); // Change image every 2 seconds
+    }
+</script>

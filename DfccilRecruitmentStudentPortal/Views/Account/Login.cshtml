@@ -1,0 +1,473 @@
+﻿@model DfccilRecruitmentStudentPortal.Models.Account.LoginModel;
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="/css/custom/login/login.css" rel="stylesheet" asp-append-version="true" />
+    <style>
+        #background-carousel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .sliced-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slice {
+            position: absolute;
+            width: 33%; /* Adjust the width of each slice as needed */
+            height: 100%;
+            transition: transform 1s ease; /* Adjust the transition duration as needed */
+        }
+
+            .slice:nth-child(1) {
+                left: 0;
+            }
+
+            .slice:nth-child(2) {
+                left: 33%;
+            }
+
+            .slice:nth-child(3) {
+                left: 66%;
+            }
+
+            .slice:nth-child(4) {
+                left: 99%;
+            }
+
+        @@media (min-width: 810px) and (max-width: 1550px) {
+            .slice {
+                position: absolute;
+                width: 50%; /* Adjust the width of each slice as needed */
+                height: 100%;
+                transition: transform 1s ease; /* Adjust the transition duration as needed */
+            }
+
+                .slice:nth-child(odd) {
+                    left: 0;
+                }
+
+                .slice:nth-child(even) {
+                    left: 50%;
+                }
+        }
+
+        @@media screen and (max-width: 809px) {
+            .slice {
+                position: absolute;
+                width: 100%; /* Adjust the width of each slice as needed */
+                height: 100%;
+                transition: transform 1s ease; /* Adjust the transition duration as needed */
+            }
+
+                .slice:nth-child(odd) {
+                    left: 0;
+                }
+
+                .slice:nth-child(even) {
+                    left: 100%;
+                }
+        }
+
+        .otp {
+            gap: 10px;
+        }
+
+            .otp input {
+                width: 11% !important;
+            }
+
+        .btn-class {
+            text-align: center;
+        }
+
+            .btn-class button {
+                font-size: 14px;
+                font-weight: normal;
+            }
+
+        .form-control:disabled {
+            background-color: #c5c5c5 !important;
+        }
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        #otp {
+        }
+
+        .form-control {
+            width: 100% !important;
+        }
+
+        .poster {
+            width: 50%;
+            background: url('https://img.freepik.com/premium-photo/excited-crazy-amazed-girlish-lady-open-mouth-wow-reaction_274222-27283.jpg');
+            background-size: cover;
+            background-position: 33%;
+        }
+
+        .poster {
+            display: none;
+        }
+
+        .footer p {
+            color: #fffb;
+        }
+
+            .footer p a {
+                color: #022255 !important;
+            }
+
+        .form-side::before {
+            content: '';
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(227deg, #1300b1, #6453f9, #65b7ff, #113eff);
+            border-radius: 50%;
+            top: -40px;
+            left: -40px;
+        }
+
+        .form-side::after {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(227deg, #673AB7, #E91E63, #FF5722, #FFEB3B);
+            border-radius: 50%;
+            bottom: -40px;
+            right: -54px;
+            z-index: 9999;
+        }
+
+        @@media (min-width: 1400px) and (max-width: 2900px) {
+            .form-cont {
+                width: 85%;
+                position: absolute;
+                top: 35%;
+                left: 22%;
+                transform: translate(-20%, -35%);
+            }
+
+            .rowh {
+                height: 600px;
+                position: relative;
+            }
+
+            .form-side {
+                margin-right: -37px;
+            }
+
+            .center-cont2 {
+                top: 55% !important;
+                transform: translate(-50%,-55%) !important;
+            }
+
+            .owl-carousel .owl-item img {
+                height: 300px !important;
+            }
+        }
+
+        @@media (min-width: 1900px) and (max-width: 2900px) {
+            .form-side {
+                margin-right: -55px;
+            }
+
+            .form-cont {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gray-background"></div>
+    <div id="background-carousel">
+        <div class="sliced-image">
+            <img class="slice" src="https://dfccil.com/images/uploads/img/Khurja-Khatauli_0WFT.jpg" alt="Image 1">
+            <img class="slice" src="https://dfccil.com/images/uploads/img/Trial-Run-started-in-Khurja-Bhadan-section-(194-km)-of-EDFC._SDZX.jpg" alt="Image 2">
+            <img class="slice" src="https://dfccil.com/images/uploads/img/New-DDU-to-New-Sonnagar-(137-km)-section-andNew-Rooma-to-New-Sujatpur-section-(130-km)-of-EDFC-were-commissioned._9763.jpg" alt="Image 3">
+            <img class="slice" src="https://dfccil.com/images/uploads/img/new_ddu_may23.jpeg" alt="Image 4">
+            <!-- Add more slices as needed -->
+        </div>
+    </div>
+
+    <div class="overflow-hidden">
+        <div class="center-cont">
+            <div class="">
+                <div class="row form-mb-row">
+                    <div class="col-md-5 rowh form-side">
+                        <div class="container form-cont">
+                            <h2 class="mb-3 form-head">Login</h2>
+                            <form class="row g-3 needs-validation" method="post">
+                                <div class="col-md-12">
+                                    <label for="validationCustom01" class="form-label">Roll Number<span style="color: #dc3545;font-size: 21px;">*</span></label>
+                                    <span asp-validation-for="RollNumber" style="color: #dc3545;font-size: 21px;"></span>
+                                    <input type="text" class="form-control lg-input" asp-for="RollNumber" id="empid" required>
+                                    <div class="invalid-feedback">
+                                        Please enter roll number.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 btn-class mb-4">
+                                    <button class="btn btn-primary btn2" type="submit">Submit</button>
+                                </div>
+                                <h4 style="color: #dc3545;font-size: 21px;">@TempData["Inivaliduser"]</h4>
+                            </form>
+                        </div>
+
+                        <div class="row dsk-hide mt-5 mb-2">
+                            <div class="col-md-12 text-center">
+                                <div class="footer">
+                                    <p>Copyright ,  <a href="https://dfccil.com/Home/DynemicPages?MenuId=154" target="_blank">@@; <span id="spanOtp"></span> DFCCIL</a></p>
+                                    <p>Government of India, All Rights Reserved <a href="https://dfccil.com/" target="_blank">DFCCIL</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 carousel-side" style="position: relative;">
+                        <div class="container">
+                            <div style="height: 470px">
+                                <div>
+                                    <div class="row p-4 align-items-center">
+                                        <div class="col-md-2">
+                                            <div class="logo">
+                                                <img src="https://uat.dfccil.cetpainfotech.com/images/logo.png">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="typing-cont" style="display: inline-block;">
+                                                <h2 class="line-1 anim-typewriter" style="color: #ffffffd1">DFCCIL Latest Updates</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row owl-carousel owl-carousel5 owl-theme center-cont2">
+                                    <div class="img-cont" href="#one!">
+                                        <img src="https://dfccil.com/images/uploads/img/Train-trial-in-Rewari-Dadri-section-31.03.2023_YIH7.png">
+                                    </div>
+
+                                    <div class="img-cont" href="#two!">
+                                        <img src="https://dfccil.com/images/uploads/SectionWebPhotoGallaryPath/29.05.2021_R017.jpeg">
+                                    </div>
+
+                                    <div class="img-cont" href="#four!">
+                                        <img src="https://dfccil.com/images/uploads/img/Bhestan-Sanjan_QSTL.jpg">
+                                    </div>
+
+                                    <div class="img-cont" href="#five!">
+                                        <img src="https://dfccil.com/images/uploads/SectionWebPhotoGallaryPath/IMG_8125_5G5Q.jpg">
+                                    </div>
+
+                                    <div class="img-cont" href="#five!">
+                                        <img src="https://dfccil.com/images/uploads/img/Trial-Run-started-in-Khurja-Bhadan-section-(194-km)-of-EDFC._SDZX.jpg">
+                                    </div>
+
+                                </div>
+                                <div class="mb-hide" style="position: absolute; left: 0;bottom: 5px;width: 100%;">
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                            <div class="footer">
+
+                                                <p>Copyright ,  <a href="https://dfccil.com/Home/DynemicPages?MenuId=154" target="_blank">&#169; <span id="spanCopyRightLogin"></span> DFCCIL</a></p>
+                                                <p>Government of India, All Rights Reserved <a href="https://dfccil.com/" target="_blank">DFCCIL</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="poster">
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+            integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="~/customjs/login/login.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var otpInputs = document.querySelectorAll(".otp-input");
+            var emailOtpInputs = document.querySelectorAll(".email-otp-input");
+
+            function setupOtpInputListeners(inputs) {
+                inputs.forEach(function (input, index) {
+                    input.addEventListener("paste", function (ev) {
+                        var clip = ev.clipboardData.getData('text').trim();
+                        if (!/^\d{6}$/.test(clip)) {
+                            ev.preventDefault();
+                            return;
+                        }
+
+                        var characters = clip.split("");
+                        inputs.forEach(function (otpInput, i) {
+                            otpInput.value = characters[i] || "";
+                        });
+
+                        enableNextBox(inputs[0], 0);
+                        inputs[5].removeAttribute("disabled");
+                        inputs[5];
+                        updateOTPValue(inputs);
+                    });
+
+                    input.addEventListener("input", function () {
+                        var currentIndex = Array.from(inputs).indexOf(this);
+                        var inputValue = this.value.trim();
+
+                        if (!/^\d$/.test(inputValue)) {
+                            this.value = "";
+                            return;
+                        }
+
+                        if (inputValue && currentIndex < 5) {
+                            inputs[currentIndex + 1].removeAttribute("disabled");
+                            inputs[currentIndex + 1];
+                        }
+
+                        if (currentIndex === 4 && inputValue) {
+                            inputs[5].removeAttribute("disabled");
+                            inputs[5];
+                        }
+
+                        updateOTPValue(inputs);
+                    });
+
+                    input.addEventListener("keydown", function (ev) {
+                        var currentIndex = Array.from(inputs).indexOf(this);
+
+                        if (!this.value && ev.key === "Backspace" && currentIndex > 0) {
+                            inputs[currentIndex - 1];
+                        }
+                    });
+                });
+            }
+
+            function enableNextBox(input, currentIndex) {
+                var inputValue = input.value;
+
+                if (inputValue === "") {
+                    return;
+                }
+
+                var nextIndex = currentIndex + 1;
+                var nextBox = inputs[nextIndex];
+
+                if (nextBox) {
+                    nextBox.removeAttribute("disabled");
+                }
+            }
+
+            function updateOTPValue(inputs) {
+                var otpValue = "";
+
+                inputs.forEach(function (input) {
+                    otpValue += input.value;
+                });
+
+                if (inputs === otpInputs) {
+                    document.getElementById("verificationCode").value = otpValue;
+                } else if (inputs === emailOtpInputs) {
+                    document.getElementById("emailverificationCode").value = otpValue;
+                }
+            }
+
+            setupOtpInputListeners(otpInputs);
+            setupOtpInputListeners(emailOtpInputs);
+
+            if (otpInputs.length > 5) {
+                otpInputs[5].addEventListener("input", function () {
+                    updateOTPValue(otpInputs);
+                });
+            }
+
+            if (emailOtpInputs.length > 5) {
+                emailOtpInputs[5].addEventListener("input", function () {
+                    updateOTPValue(emailOtpInputs);
+                });
+            }
+        });
+
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var slices = $(".slice");
+
+            // Initial positions
+            slices.css("transform", "translateX(0)");
+
+            function changeBackground() {
+                slices.css("transform", "translateX(-1%)"); 
+                setTimeout(function () {
+                   
+                    $(".sliced-image").append($(".slice:first"));
+                    slices.css("transform", "translateX(0)"); 
+                }, 1000); 
+            }
+
+            setInterval(changeBackground, 5000);
+        });
+
+        var spanCopyRightLogin = document.getElementById("spanCopyRightLogin");
+        var spanOtp = document.getElementById("spanOtp");
+        var date = new Date();
+        var year = date.getFullYear();
+        spanCopyRightLogin.innerHTML = year;
+        spanOtp.innerHTML = year;
+       
+    </script>
+
+    @*     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+    <script>
+    $(document).ready(function () {
+    $("body").ripples({
+    resolution: 1120,
+    dropRadius: 3,
+    perturbance: 0.01,
+    });
+    });
+    </script> *@
+
+</body>
+</html>
+

@@ -1,0 +1,126 @@
+﻿<link href="~/css/custom/dfccil1011_01.css" rel="stylesheet" asp-append-version="true" />
+
+<style>
+    #spanPercentage {
+        display: none;
+    }
+
+    img.layOutProfilePic {
+        border: 5px solid white;
+    }
+    .label-width {
+        width: 200px;
+    }
+
+    .heading2{
+        position:absolute;
+        top:50%;
+        left:50%;
+        text-align: center;
+        transform:translate(-50%,-50%);
+        color: #4b49ac !important;
+        font-weight:700;
+        background: -webkit-linear-gradient(45deg, #b80000, #002da0, #00a7f0 90%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .formFlex {
+        display: flex;
+        align-items: center;
+    }
+
+    thead {
+        background: unset !important;
+        color: #4b49ac !important;
+    }
+
+        thead th {
+            padding-left: 10px;
+        }
+</style>
+<div id="divNotFound" style="display:none">
+    <h2 id="headingMessage" class="heading2"></h2>
+</div>
+<div id="divCandidateOffer" style="display:none" class='grid-margin col-lg-12'>
+    <div class="upper-gradient-layer">
+        <div class="card lower-gradient-layer">
+            <div class='card-body'>
+                <div class='row'>
+                    <div class='col-lg-4'>
+                        <div class="form-group">
+                            <div class="form-line formFlex">
+                                <label class="label-width">Dear Candidate Name</label>
+                                <div class="span_div">
+                                    <span class="table_span" id="inputDearCandidate" value=""></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <label class="mb-3 mt-2">Your offer details are mentioned below</label>
+
+                <div class="table-responsive">
+                    <table class="" border="1" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Post</th>
+                                <th>Grade</th>
+                                <th>Pay Scale</th>
+                                <th>Date of Joining</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyOfferDetails">
+                        </tbody>
+                    </table>
+                </div>
+                <label class="mb-3 mt-2">Please submit your confirmation</label>
+                <div class="text-center">
+                    <button class="btn btn-success" onclick="AcceptOffer_Click()">Accept Offer</button>
+                    <button class="btn btn-danger" onclick="RejectOffer_Click()">Reject Offer</button>
+@*                     <button id="btnExtention" class="btn btn-warning text-white" data-toggle="modal" data-target="#exampleModal">Request Joining Date Extension</button>
+ *@                </div>
+                <label style="color:#4b49ac">Regards <br />DFCCIL</label>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <label class="modal-title" id="exampleModalLabel">Request Extension</label>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-line">
+                    <label>Extention Date</label>
+                    <input type="date" class="form-control" id="inputExtentionDate" />
+                </div>
+                <div class="form-line">
+                    <label>Reason</label>
+                    <textarea class="form-control" rows="3" id="txtExtensionArea"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="ExtensionConfirm_Click()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var today = new Date().toISOString().split('T')[0];
+
+    document.getElementById("inputExtentionDate").setAttribute("min", today);
+</script>
+
+<script src="~/customjs/offerletter/offerletterdetail.js" asp-append-version="true"></script>
