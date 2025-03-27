@@ -449,6 +449,23 @@
                                             </div>
                                         </div>
 
+                                            <div class="div-width-file">
+
+                                            <div class="form-group">
+
+                                                <label class="eaval_label">
+                                                    Father's Name <br />
+                                                 <span class="text-span-size">proof </span></label>
+                                                <div class="import-btn">
+                                                    <div class="file-area file-group-download">
+                                                        <div class="file-dummy">
+                                                            <button id="btnFatherNameproof" type="button" style="padding:0;color:white;font-size:.75rem;" onclick="TrigerModalUploadFile('Father Name proof ','FatherNameproof')" class="btn"><i class="fa fa-upload" aria-hidden="true" style="color:white"></i> Upload File<span id="spanFatherNameproof" class="file-status">0</span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
 
 
                                     </div>
@@ -569,6 +586,23 @@
                                                     <div class="file-area file-group-download">
                                                         <div class="file-dummy">
                                                             <button style="border:unset; padding:0;width:max-content;color:white;font-size:.75rem;" onclick="TrigerModalViewFile('PersonalDetails Other','PersonalDetailsOther')" type="button" class="btn btn-padd"><i class="fa fa-eye" aria-hidden="true"></i> View File<span id="spanPersonalDetailsOtherView" class="file-status">0</span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="div-width-file">
+
+                                            <div class="form-group">
+
+                                                <label class="eaval_label">
+                                                    father's name <br />
+                                                 <span class="text-span-size">proof </span></label>
+                                                <div class="import-btn">
+                                                    <div class="file-area file-group-download">
+                                                        <div class="file-dummy">
+                                                            <button style="border:unset; padding:0;width:max-content;color:white;font-size:.75rem;" onclick="TrigerModalViewFile('fathers Name Proof','fathersNameProof')" type="button" class="btn btn-padd"><i class="fa fa-eye" aria-hidden="true"></i> View File<span id="spanfathersNameProofView" class="file-status">0</span></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -4812,7 +4846,7 @@
                                                     <div class="col-sm-3 p-0">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="AreYouPWD" id="radioAreYouPWDYes" value="" checked="">
+                                                                <input type="radio" class="form-check-input" name="AreYouPWD" id="radioAreYouPWDYes" value="" checked="" onchange="radioButtonChange(this,'yes')">
                                                                 Yes
                                                                 <i class="input-helper"></i>
                                                             </label>
@@ -4821,7 +4855,7 @@
                                                     <div class="col-sm-2 p-0">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
-                                                                <input type="radio" class="form-check-input" name="AreYouPWD" id="radioAreYouPWDNo" value="">
+                                                                <input type="radio" class="form-check-input" name="AreYouPWD" id="radioAreYouPWDNo" value="" onchange="radioButtonChange(this,'no')">
                                                                 No
                                                                 <i class="input-helper"></i>
                                                             </label>
@@ -4852,6 +4886,46 @@
 
 
                                         </tr>
+                                        <tr>
+                                            <td>10.a</td>
+                                            <td>
+                                                 <div class="other_dropdown">
+                                                <label for="inputPWDCertificateNo" class="heading6  dropdowb_length">Certificate No</label>
+                                            
+                                            
+                                                   <div class="form-line">
+                                                <input type="text" class="form-control" id="inputPWDCertificateNo" style="width:170px;display:none;" />
+                                                </div>
+                                                </div>
+                                            </td>
+                                            </tr>
+                                                <tr>
+                                                    <td>10.b</td>
+                                                    <td>
+                                            <div class="other_dropdown">
+                                                   <label for="inputPWDDateOfIssue" class="heading6  dropdowb_length">Date of Issue</label>
+                                                    
+                                                <div class="form-line">
+                                                <input type="date" class="form-control" id="inputPWDDateOfIssue" style="width:170px;display:none;" />
+                                                </div>
+                                                </div>
+                                                </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10.c</td>
+                                                        <td>
+                                                         <div class="other_dropdown">
+                                            <label for="inputPWDIssuingAuthority" class="heading6  dropdowb_length">Issuing Authority</label>
+                                                     
+                                                <div class="form-line">
+                                                <input type="text" class="form-control" id="inputPWDIssuingAuthority" style="width:170px;display:none;"/>
+                                                </div>
+                                                 </div>
+                                            </td>
+                                                    </tr>
+                                          
+                                         
+
                                         <tr>
                                             <td>11</td>
                                             <td>

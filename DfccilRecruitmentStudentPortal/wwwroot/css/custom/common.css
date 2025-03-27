@@ -106,10 +106,13 @@ td a.file-link {
 .sidebar {
     width: 165px;
 }
-
-.main-panel {
-    width: calc(100% - 270px);
+    .sidebar{
+        position:unset !important;
 }
+
+    .main-panel {
+        width: calc(100% - 270px);
+    }
 
 .content-wrapper {
     padding: 1.375rem 1.375rem;

@@ -570,6 +570,7 @@ function loadProfileData() {
             { modelName: 'uploadDocument.', elementType: 'upload', frontFieldName: 'AddressProof', apiFieldName: 'AddressProof', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: false, isDisabled: false, isEditable: false },
             //{ modelName: 'uploadDocument.', elementType: 'upload', frontFieldName: 'PersonalDetailsPassport', apiFieldName: 'PersonalDetailsPassport', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
             { modelName: 'uploadDocument.', elementType: 'upload', frontFieldName: 'PersonalDetailsOther', apiFieldName: 'PersonalDetailsOther', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
+            { modelName: 'uploadDocument.', elementType: 'upload', frontFieldName: 'FatherNameproof', apiFieldName: 'FatherNameproof', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
             { modelName: 'uploadDocument.', elementType: 'upload', frontFieldName: 'UploadSingnature', apiFieldName: 'UploadSingnature', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
             { modelName: 'CandidateProfile.', elementType: 'uploadSingle', frontFieldName: 'fileCandidatePic', apiFieldName: 'ProfilePic', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
 
@@ -580,6 +581,7 @@ function loadProfileData() {
             { modelName: 'uploadDocument.', elementType: 'view', frontFieldName: 'PersonalDetailsPassport', apiFieldName: 'PersonalDetailsPassport', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
             { modelName: 'uploadDocument.', elementType: 'view', frontFieldName: 'PersonalDetailsOther', apiFieldName: 'PersonalDetailsOther', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
             { modelName: 'uploadDocument.', elementType: 'view', frontFieldName: 'UploadSingnature', apiFieldName: 'UploadSingnature', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
+            { modelName: 'uploadDocument.', elementType: 'view', frontFieldName: 'fathersNameProof', apiFieldName: 'fathersNameProof', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
 
 
 
@@ -1522,6 +1524,12 @@ function loadOtherDetailUploaded() {
             { modelName: '', elementType: 'radio', frontFieldName: 'radioOthersUploadNo', apiFieldName: 'OthersUpload', attrName: 'checked', getFunction: 'prop', setFunction: 'prop', isReadOnly: false, isDisabled: false, isEditable: false },
             //{ elementType: 'radio', frontFieldName: 'radioServicemenDependantofkilledinActionYes', apiFieldName: 'ServicemenDependantofkilledinAction', attrName: 'checked', getFunction: 'prop', setFunction: 'prop', isReadOnly: true, isDisabled: true, isEditable:false },
             //{ elementType: 'radio', frontFieldName: 'radioServicemenDependantofkilledinActionNo', apiFieldName: 'ServicemenDependantofkilledinAction', attrName: 'checked', getFunction: 'prop', setFunction: 'prop', isReadOnly: true, isDisabled: true, isEditable:false },
+            // shah
+            { modelName: '', elementType: 'input', frontFieldName: 'inputPWDCertificateNo', apiFieldName: 'PWDCertificateNo', attrName: 'value', getFunction: 'val', setFunction: 'val', isReadOnly: true, isDisabled: true, isEditable: false },
+            { modelName: '', elementType: 'input', frontFieldName: 'inputPWDDateOfIssue', apiFieldName: 'PWDDateOfIssue', attrName: 'value', getFunction: 'val', setFunction: 'val', isReadOnly: true, isDisabled: true, isEditable: false },
+            { modelName: '', elementType: 'input', frontFieldName: 'inputPWDIssuingAuthority', apiFieldName: 'PWDIssuingAuthority', attrName: 'value', getFunction: 'val', setFunction: 'val', isReadOnly: true, isDisabled: true, isEditable: false },
+
+            // shah
 
             { modelName: '', elementType: 'input', frontFieldName: 'inputTypeOfDisability', apiFieldName: 'TypeOfDisability', attrName: 'value', getFunction: 'val', setFunction: 'val', isReadOnly: true, isDisabled: true, isEditable: false },
             { modelName: '', elementType: 'select', frontFieldName: 'selectReservationCategory', apiFieldName: 'ReservationCategory', attrName: 'value', getFunction: 'val', setFunction: 'val', isReadOnly: false, isDisabled: false, isEditable: false },
@@ -2144,7 +2152,7 @@ function saveProfile_click(e) {
     $.ajax({
         type: "POST",
         url: _url,
-        data: formDataNew,
+        data: formDataNew, 
         processData: false,
         contentType: false,
         /*headers: { Authorization: ApiToken },*/
@@ -3951,7 +3959,23 @@ function cancelOther_click(e) {
 
     FillApiDataIntoFrontEnd(otherObject, '', 3);
 }
+// shah
+function radioButtonChange(e, type) {
+    debugger
+    if (type === 'yes') {
+        $('#inputPWDCertificateNo').show();
+        $('#inputPWDDateOfIssue').show();
+        $('#inputPWDIssuingAuthority').show();
+         }
+  
+    else {
+        $('#inputPWDCertificateNo').hide();
+        $('#inputPWDDateOfIssue').hide();
+        $('#inputPWDIssuingAuthority').hide();
+    }
+}
 
+// shah
 
 
 function FillApiDataIntoFrontEnd(objectFront, objectApi, mode) {
