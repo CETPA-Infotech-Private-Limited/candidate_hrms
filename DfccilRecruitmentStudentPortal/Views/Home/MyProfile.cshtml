@@ -10,9 +10,21 @@
         </div>
     </div>
 </div>
+<div id="toastError" class="custom-toast">Invalid PAN number</div>
 <style>
-  
-   
+
+    .custom-toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #d9534f;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        z-index: 9999;
+        display: none;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
 
   
     .form-control[disabled]::placeholder {

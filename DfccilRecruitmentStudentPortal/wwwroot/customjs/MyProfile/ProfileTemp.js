@@ -4744,4 +4744,76 @@ function handleAjaxError(errorMessage) {
         text: errorMessage,
         icon: 'error'
     });
+};
+
+/*vaidation for pan card shah*/
+// PAN Validation
+$('#inputPanNo').on('input', function () {
+    let input = $(this).val().toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+    let valid = '';
+    for (let i = 0; i < input.length && i < 10; i++) {
+        if (i < 5 && /[A-Z]/.test(input[i])) {
+            valid += input[i];
+        } else if (i >= 5 && i < 9 && /[0-9]/.test(input[i])) {
+            valid += input[i];
+        } else if (i === 9 && /[A-Z]/.test(input[i])) {
+            valid += input[i];
+        } else {
+            break;
+        }
+    }
+
+    $(this).val(valid);
+
+    if (valid.length === 10) {
+        const panRegexFull = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+        if (panRegexFull.test(valid)) {
+            showToast("Correct PAN format", true);
+        } else {
+            showToast("Invalid PAN number");
+        }
+    }
+});
+
+
+$('#inputAdharNo').on('input', function () {
+    let input = $(this).val();
+
+    input = input.replace(/\D/g, '');
+
+    input = input.substring(0, 12);
+
+    let formatted = input.match(/.{1,4}/g)?.join(' ') || '';
+
+    $(this).val(formatted);
+
+    let plainInput = input;
+
+    if (plainInput.length === 12) {
+        const adharRegex = /^[2-9]{1}[0-9]{11}$/;
+        if (adharRegex.test(plainInput)) {
+            showToast("Correct Aadhaar format", true);
+        } else {
+            showToast("Invalid Aadhaar number");
+        }
+    }
+});
+
+
+function showToast(message, isSuccess) {
+    const toast = $('#toastError');
+    toast
+        .text(message)
+        .css('background-color', isSuccess ? '#28a745' : '#dc3545') 
+        .fadeIn(400);
+
+    setTimeout(function () {
+        toast.fadeOut(400);
+    }, 3000);
 }
+
+
+
+
+
