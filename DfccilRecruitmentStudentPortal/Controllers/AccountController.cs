@@ -16,17 +16,20 @@ namespace DfccilRecruitmentStudentPortal.Controllers
     public class AccountController : Controller
     {
 
-        /// DFCCIL Hosting Api Link
+        /// UAT CETPA Hosting Api Link
+        //private string apiBaseUrlOrganization = "https://uatorganization.dfccil.com";
+        //private string apiBaseUrlTourServices = "https://uat.tourservices.cetpainfotech.com";
+        //private string apiBaseUrlServices = "https://uat.dfccilrecruitmentservices.cetpainfotech.com";
+
+        /// UAT DFCCIL Hosting Api Link
+        private string apiBaseUrlOrganization = "https://uatorganization.dfccil.com";
+        private string apiBaseUrlTourServices = "https://uattourapi.dfccil.com";
+        private string apiBaseUrlServices = "https://uatrecruitment.dfccil.com";
+
+        /// PROD DFCCIL Hosting Api Link
         //private string apiBaseUrlOrganization = "https://orgsvc.dfccil.com";
         //private string apiBaseUrlTourServices = "https://toursvc.dfccil.com";
-        //private string apiBaseUrlReimbursement = "https://devicesvc.dfccil.com";
-        //private string apiBaseUrlHRRecruitment = "https://uat.dfccilrecruitmentservices.cetpainfotech.com";
-
-        /// DFCCIL Hosting Api Link
-        private string apiBaseUrlOrganization = "https://orgsvc.dfccil.com";
-      // private string apiBaseUrlServices = "https://recruitmentsvc.dfccil.com";
-     private string apiBaseUrlServices = "https://uat.dfccilrecruitmentservices.cetpainfotech.com";
-      // private string apiBaseUrlReimbursement = "https://devicesvc.dfccil.com";
+        //private string apiBaseUrlServices = "https://recruitmentsvc.dfccil.com";
 
         private readonly IHttpContextAccessor _httpContextAccessor;
         public AccountController(IHttpContextAccessor httpContextAccessor)
