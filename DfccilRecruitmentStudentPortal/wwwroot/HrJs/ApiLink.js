@@ -4,7 +4,7 @@
   //var apiBaseUrlTourServices = 'https://uat.tourservices.cetpainfotech.com'
 
 /// UAT DFCCIL Hosting Api Link
-  var apiBaseUrlHr = 'https://uatrecruitment.dfccil.com';
+  var apiBaseUrlHr = 'https://uatrecruitmentapi.dfccil.com';
   var apiBaseUrlOrganization = 'https://uatorganization.dfccil.com';
   var apiBaseUrlTourServices = 'https://uattourapi.dfccil.com'
 

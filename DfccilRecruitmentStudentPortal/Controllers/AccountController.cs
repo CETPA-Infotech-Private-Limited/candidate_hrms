@@ -24,7 +24,7 @@ namespace DfccilRecruitmentStudentPortal.Controllers
         /// UAT DFCCIL Hosting Api Link
         private string apiBaseUrlOrganization = "https://uatorganization.dfccil.com";
         private string apiBaseUrlTourServices = "https://uattourapi.dfccil.com";
-        private string apiBaseUrlServices = "https://uatrecruitment.dfccil.com";
+        private string apiBaseUrlServices = "https://uatrecruitmentapi.dfccil.com";
 
         /// PROD DFCCIL Hosting Api Link
         //private string apiBaseUrlOrganization = "https://orgsvc.dfccil.com";
