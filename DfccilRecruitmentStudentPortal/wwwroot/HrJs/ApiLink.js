@@ -1,15 +1,18 @@
-﻿/// CETPA Hosting Api Link
+﻿/// UAT CETPA Hosting Api Link
+  //var apiBaseUrlHr = 'https://uat.dfccilrecruitmentservices.cetpainfotech.com';
+  //var apiBaseUrlOrganization = 'http://uatorganization.dfccil.com';
+  //var apiBaseUrlTourServices = 'https://uat.tourservices.cetpainfotech.com'
 
-  var apiBaseUrlHr = 'https://uat.dfccilrecruitmentservices.cetpainfotech.com';
+/// UAT DFCCIL Hosting Api Link
+  var apiBaseUrlHr = 'https://uatrecruitmentapi.dfccil.com';
+  var apiBaseUrlOrganization = 'https://uatorganization.dfccil.com';
+  var apiBaseUrlTourServices = 'https://uattourapi.dfccil.com'
 
+/// PROD DFCCIL Hosting Api Link
+  //var apiBaseUrlOrganization = 'https://orgsvc.dfccil.com';
+  //var apiBaseUrlHr = 'https://recruitmentsvc.dfccil.com';
+  //var apiBaseUrlTourServices = 'https://toursvc.dfccil.com'
 
-
-/// DFCCIL Hosting Api Link
-var apiBaseUrlOrganization = 'https://orgsvc.dfccil.com';
-//var apiBaseUrlHr = 'https://recruitmentsvc.dfccil.com';
-
-//var apiBaseUrlTourServices = 'https://toursvc.dfccil.com'
-//var apiBaseUrlReimbursement = 'https://devicesvc.dfccil.com'
 
 
 
