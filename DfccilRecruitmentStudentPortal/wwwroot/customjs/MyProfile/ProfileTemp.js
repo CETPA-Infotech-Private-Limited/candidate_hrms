@@ -2018,7 +2018,7 @@ function getCandidateProfileCompleteStaus() {
 }
 
 function loadAllDataOfCandidateData(objData) {
-
+    debugger
     function getDataFromApi() {
 
         //alert('Not running Api Call due to Return ');        
@@ -2057,6 +2057,20 @@ function loadAllDataOfCandidateData(objData) {
                 loadOtherEducationDetails();
                 loadEmployerDetails();
                 loadUploadedFiles();
+                if (response.data.candidateProfile.oldMobileNo || response.data.candidateProfile.oldEmailId) {
+
+                    Toastify({
+                     
+                        text: `For further communication, we will contact you on Mobile No: ${response.data.candidateProfile.oldMobileNo} and Email ID: ${response.data.candidateProfile.oldEmailId}.`,
+
+                        duration: 3000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "#4CAF50",
+                    }).showToast();
+
+                }
                 if (allData.candidate.isEditModeDeclaration) {
                     $("#btnundertaking").css('display', 'inline')
                 }
@@ -2125,12 +2139,8 @@ function pickupload_Click(e) {
 var isSaveAll = false;
 
 function saveProfile_click(e) {
-    //let validX = firstNextValidationBtn()
-    //if (validX == undefined) {
-    //   return
-    //}
 
-
+    debugger
     $('.inputPersonalDetails').prop('readonly', true);
     $("#selectMartialStatus").prop('disabled', true);
     $('.PersonalDetailsdivEditButtonClaim').show();
@@ -2179,6 +2189,7 @@ function saveProfile_click(e) {
                     text: response.statusCode == 201 ? 'Request has been successfully submitted!' : response.message,
                     icon: "success"
                 })
+
             }
             else {
                 Swal.fire({
