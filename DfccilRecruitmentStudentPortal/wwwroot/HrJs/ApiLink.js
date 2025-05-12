@@ -18,6 +18,6 @@
 
 
 var unAuthorisedUrl = '/Account/AccessDenied';
-var mainLoginUrl = '/Account/AccessDenied';
+var mainLoginUrl = '/Account/AccessDenied'; 
 var forbiddenUrl = '/Account/AccessDenied';
 

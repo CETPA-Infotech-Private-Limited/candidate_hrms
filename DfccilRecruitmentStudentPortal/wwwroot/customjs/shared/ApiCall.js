@@ -10,7 +10,8 @@
 
 //} 
 
-var apiBaseUrl = 'https://uat.tourservices.cetpainfotech.com';
+//var apiBaseUrl = 'https://uat.tourservices.cetpainfotech.com';
+var apiBaseUrl = 'https://toursvc.dfccil.com';
 
 function getApiCall(url, successCallBack, failourCallBack, data = {},contentType= "application/json; charset=utf-8", dataType= "json") {	 
 	 $.ajax({

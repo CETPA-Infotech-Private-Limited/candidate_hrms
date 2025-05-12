@@ -2156,7 +2156,8 @@ function saveProfile_click(e) {
 
 
 
-    var _url = apiBaseUrlHr + "/api/Candidate/SaveCandidatePersonalDetails/" + candidateId;
+    var _url = api
+    Hr + "/api/Candidate/SaveCandidatePersonalDetails/" + candidateId;
     _url = _url.replace(/[\u200B-\u200D\uFEFF]/g, '');
 
     $.ajax({
