@@ -41,6 +41,7 @@
     .undertakin6.newOnwAddedClass {
         display: none !important
     }
+ 
     
 </style>
  
@@ -48,6 +49,11 @@
 <link href="~/css/custom/dfccil1011_01.css" rel="stylesheet" asp-append-version="true" />
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" asp-append-version="true" />
 <link rel="stylesheet" href="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css" asp-append-version="true" />
+<marquee behavior="alternate" direction="left" id="marqueeB" style="display:none;">
+  For further communication, we will contact you on Mobile No 
+  <b><span id="spanMobilePara" style="color:red;"></span></b> and Email ID: 
+  <b><span id="spanEmailPara" style="color:red;"></span></b>
+</marquee>
 
 <div id="msform">
     <!-- progressbar -->
@@ -471,7 +477,7 @@
                                                 <div class="import-btn">
                                                     <div class="file-area file-group-download">
                                                         <div class="file-dummy">
-                                                            <button id="btnFatherNameproof" type="button" style="padding:0;color:white;font-size:.75rem;" onclick="TrigerModalUploadFile('Father Name proof ','FatherNameproof')" class="btn"><i class="fa fa-upload" aria-hidden="true" style="color:white"></i> Upload File<span id="spanFatherNameproof" class="file-status">0</span></button>
+                                                            <button id="btnCandidateFatherNameProof" type="button" style="padding:0;color:white;font-size:.75rem;" onclick="TrigerModalUploadFile('Father Name proof','CandidateFatherNameProof')" class="btn"><i class="fa fa-upload" aria-hidden="true" style="color:white"></i> Upload File<span id="spanCandidateFatherNameProof" class="file-status">0</span></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -614,7 +620,7 @@
                                                 <div class="import-btn">
                                                     <div class="file-area file-group-download">
                                                         <div class="file-dummy">
-                                                            <button style="border:unset; padding:0;width:max-content;color:white;font-size:.75rem;" onclick="TrigerModalViewFile('fathers Name Proof','fathersNameProof')" type="button" class="btn btn-padd"><i class="fa fa-eye" aria-hidden="true"></i> View File<span id="spanfathersNameProofView" class="file-status">0</span></button>
+                                                            <button style="border:unset; padding:0;width:max-content;color:white;font-size:.75rem;" onclick="TrigerModalViewFile('fathers Name Proof','CandidateFatherNameProof')" type="button" class="btn btn-padd"><i class="fa fa-eye" aria-hidden="true"></i> View File<span id="spanCandidateFatherNameProofView" class="file-status">0</span></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -5582,7 +5588,7 @@
             Submit
         </button>
     </fieldset>
-    
+    </div>
     <div>
        <input type="hidden" id="testing">
 <!-- Upload Modal HTML -->

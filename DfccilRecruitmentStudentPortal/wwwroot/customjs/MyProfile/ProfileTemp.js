@@ -357,7 +357,7 @@ function deleteUploadedFiles(e, id, type2) {
         success: function (response) {
             console.log('Response:', response);
             documentDetails[type2] = documentDetails[type2].filter(a => a.id != id);
-            loadAllDataOfCandidateData();           
+            loadAllDataOfCandidateData();
             getCandidateProfileCompleteStaus();
             $('.page-loader').hide();
 
@@ -455,7 +455,7 @@ function loadUploadedFiles() {
     for (let e of distinctArr) {
         documentDetails[e] = data.filter(e1 => e1.documentName == e);
         $("#span" + e + "View").html(documentDetails[e].length);
-    }    
+    }
 }
 
 function setRollNumberAndCandidateId() {
@@ -570,7 +570,7 @@ function loadProfileData() {
             { modelName: 'uploadDocument.', elementType: 'upload', frontFieldName: 'AddressProof', apiFieldName: 'AddressProof', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: false, isDisabled: false, isEditable: false },
             //{ modelName: 'uploadDocument.', elementType: 'upload', frontFieldName: 'PersonalDetailsPassport', apiFieldName: 'PersonalDetailsPassport', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
             { modelName: 'uploadDocument.', elementType: 'upload', frontFieldName: 'PersonalDetailsOther', apiFieldName: 'PersonalDetailsOther', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
-            { modelName: 'uploadDocument.', elementType: 'upload', frontFieldName: 'FatherNameproof', apiFieldName: 'FatherNameproof', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
+            { modelName: 'uploadDocument.', elementType: 'upload', frontFieldName: 'CandidateFatherNameProof', apiFieldName: 'CandidateFatherNameProof', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
             { modelName: 'uploadDocument.', elementType: 'upload', frontFieldName: 'UploadSingnature', apiFieldName: 'UploadSingnature', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
             { modelName: 'CandidateProfile.', elementType: 'uploadSingle', frontFieldName: 'fileCandidatePic', apiFieldName: 'ProfilePic', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
 
@@ -581,7 +581,7 @@ function loadProfileData() {
             { modelName: 'uploadDocument.', elementType: 'view', frontFieldName: 'PersonalDetailsPassport', apiFieldName: 'PersonalDetailsPassport', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
             { modelName: 'uploadDocument.', elementType: 'view', frontFieldName: 'PersonalDetailsOther', apiFieldName: 'PersonalDetailsOther', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
             { modelName: 'uploadDocument.', elementType: 'view', frontFieldName: 'UploadSingnature', apiFieldName: 'UploadSingnature', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
-            { modelName: 'uploadDocument.', elementType: 'view', frontFieldName: 'fathersNameProof', apiFieldName: 'fathersNameProof', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
+            { modelName: 'uploadDocument.', elementType: 'view', frontFieldName: 'CandidateFatherNameProof', apiFieldName: 'CandidateFatherNameProof', attrName: 'src', getFunction: 'src', setFunction: 'src', isReadOnly: true, isDisabled: true, isEditable: false },
 
 
 
@@ -1354,14 +1354,17 @@ function loadAddressDetail() {
 
 
             }
-
+            debugger
             if (d.addressType == "Hometown Address") {
-                if (d.address1 != "" || d.address2 != "") {
+                $("#radioHomeTownAddressYes").prop("checked", true);
+                if (d.address1 == "" && d.address2 == "") {
                     $('#divHomeTownAddress').show();
-                    $("#radioHomeTownAddressNo").prop("checked", true);
                 }
                 FillApiDataIntoFrontEnd(getFrontEndObjectHometown(), d, 1);
 
+            }
+            else {
+                $("#radioHomeTownAddressNo").prop("checked", true);
             }
 
         }
@@ -2058,17 +2061,11 @@ function loadAllDataOfCandidateData(objData) {
                 loadEmployerDetails();
                 loadUploadedFiles();
                 if (response.data.candidateProfile.oldMobileNo || response.data.candidateProfile.oldEmailId) {
+                    $('#marqueeB').show();
+                    $('#spanMobilePara').text(response.data.candidateProfile.oldMobileNo);
 
-                    Toastify({
-                     
-                        text: `For further communication, we will contact you on Mobile No: ${response.data.candidateProfile.oldMobileNo} and Email ID: ${response.data.candidateProfile.oldEmailId}.`,
+                    $('#spanEmailPara').text(response.data.candidateProfile.oldEmailId);  
 
-                        duration: 3000,
-                        close: true,
-                        gravity: "top",
-                        position: "right",
-                        backgroundColor: "#4CAF50",
-                    }).showToast();
 
                 }
                 if (allData.candidate.isEditModeDeclaration) {
@@ -2136,11 +2133,56 @@ function saveAll() {
 function pickupload_Click(e) {
     saveProfile_click(e);
 }
+function validation() {
+    debugger
+    var inputAdharNo = $('#inputAdharNo').val().trim();
+    var inputAlternateMobileNo = $('#inputAlternateMobileNo').val().trim();
+    var inputMobileNo = $('#inputMobileNo').val().trim();
+    var inputConfirmAlternateMobileNo = $('#inputConfirmAlternateMobileNo').val().trim();
+
+    if (inputAdharNo.length !== 12 || !/^\d{12}$/.test(inputAdharNo)) {
+        $('#inputAdharNo').css('border', '1px solid red');
+        return false;
+    } else {
+        $('#inputAdharNo').css('border', '');
+    }
+
+    if (!/^\d{10}$/.test(inputMobileNo)) {
+        $('#inputMobileNo').css('border', '1px solid red');
+        return false;
+    } else {
+        $('#inputMobileNo').css('border', '');
+    }
+    if (!/^\d{10}$/.test(inputAlternateMobileNo)) {
+        $('#inputAlternateMobileNo').css('border', '1px solid red');
+        return false;
+    } else {
+        $('#inputAlternateMobileNo').css('border', '');
+    }
+
+    if (!/^\d{10}$/.test(inputConfirmAlternateMobileNo)) {
+        $('#inputConfirmAlternateMobileNo').css('border', '1px solid red');
+        return false;
+    } else {
+        $('#inputConfirmAlternateMobileNo').css('border', '');
+    }
+    
+
+    return true;
+}
+
+
+
+
 var isSaveAll = false;
 
 function saveProfile_click(e) {
-
     debugger
+    if (!validation()) {
+        return; 
+    }
+   
+  
     $('.inputPersonalDetails').prop('readonly', true);
     $("#selectMartialStatus").prop('disabled', true);
     $('.PersonalDetailsdivEditButtonClaim').show();
@@ -2156,14 +2198,13 @@ function saveProfile_click(e) {
 
 
 
-    var _url = api
-    Hr + "/api/Candidate/SaveCandidatePersonalDetails/" + candidateId;
+    var _url = apiBaseUrlHr + "/api/Candidate/SaveCandidatePersonalDetails/" + candidateId;
     _url = _url.replace(/[\u200B-\u200D\uFEFF]/g, '');
 
     $.ajax({
         type: "POST",
         url: _url,
-        data: formDataNew, 
+        data: formDataNew,
         processData: false,
         contentType: false,
         /*headers: { Authorization: ApiToken },*/
@@ -3978,8 +4019,8 @@ function radioButtonChange(e, type) {
         $('#inputPWDCertificateNo').show();
         $('#inputPWDDateOfIssue').show();
         $('#inputPWDIssuingAuthority').show();
-         }
-  
+    }
+
     else {
         $('#inputPWDCertificateNo').hide();
         $('#inputPWDDateOfIssue').hide();
@@ -4796,9 +4837,8 @@ $('#inputAdharNo').on('input', function () {
 
     input = input.substring(0, 12);
 
-    let formatted = input.match(/.{1,4}/g)?.join(' ') || '';
 
-    $(this).val(formatted);
+    $(this).val(input);
 
     let plainInput = input;
 
@@ -4812,12 +4852,24 @@ $('#inputAdharNo').on('input', function () {
     }
 });
 
+$('#inputMobileNo, #inputAlternateMobileNo,#inputConfirmAlternateMobileNo').on('input', function () {
+   
+    let value = $(this).val().replace(/\D/g, '');
+
+    if (value.length > 10) {
+        value = value.substring(0, 10);
+    }
+
+    $(this).val(value);
+});
+
+
 
 function showToast(message, isSuccess) {
     const toast = $('#toastError');
     toast
         .text(message)
-        .css('background-color', isSuccess ? '#28a745' : '#dc3545') 
+        .css('background-color', isSuccess ? '#28a745' : '#dc3545')
         .fadeIn(400);
 
     setTimeout(function () {
